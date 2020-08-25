@@ -1,0 +1,1 @@
+from yd.settings.common import *
