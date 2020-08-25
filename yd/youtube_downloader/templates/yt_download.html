@@ -1,0 +1,42 @@
+{% extends 'index.html' %}
+{% block container %}
+<br>
+<center>
+    <h2>Your video</h2>
+</center>
+<center>
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe width="560" height="315"  class="embed-responsive-item" src="{{ embed_link }}" allowfullscreen></iframe>
+
+    </div>
+</center>
+<br>
+<p>Url = {{ url }}</p>
+<p>Embed_link = {{ embed_link }}</p>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+
+            <th scope="col">Select Resolution</th>
+            <th scope="col">Download</th>
+        </tr>
+
+
+    </thead>
+    <tbody>
+        {% for resolution in resolutions %}
+        <tr>
+
+            <td>{{ resolution }}</td>
+            <td>
+                <form action="{% url 'ytd:download_complete' resolution %}" method="POST" class="post-form">
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-success" value="DOWNLOAD">
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+
+    </tbody>
+</table>
+{% endblock %}
