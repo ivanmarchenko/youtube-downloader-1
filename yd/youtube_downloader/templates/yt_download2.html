@@ -5,13 +5,10 @@
     <h2>Your video</h2>
 </center>
 <center>
-    <!-- <div class="embed-responsive embed-responsive-16by9">
-<iframe width="560" height="315"  class="embed-responsive-item" src="{{ embed_link }}" allowfullscreen></iframe>
-</div> -->
+        <iframe width="560" height="315" src="{{ url }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </center>
 <br>
-<p>Url = {{ url }}</p>
-<p>Embed_link = {{ embed_link }}</p>
+
 
 <div class="container">
     <div class="row">
@@ -21,7 +18,7 @@
                     <tr>
                         <th scope="col">Select Resolution</th>
                         <th scope="col">Size</th>
-                        <th scope="col">Itag</th>
+                        <!-- <th scope="col">Itag</th> -->
                         <th scope="col">Download</th>
                     </tr>
                 </thead>
@@ -30,7 +27,7 @@
                     <tr>
                         <td>{{ value.resolution  }}</td>
                         <td>{{ value.size }}</td>
-                        <td>{{ itag }}</td>
+                        <!-- <td>{{ itag }}</td> -->
                         <td>
                             <form action="{% url 'ytd:download_complete' itag %}" method="POST"
                                 class="post-form">
@@ -49,7 +46,7 @@
                     <tr>
                         <th scope="col">Type</th>
                         <th scope="col">Size</th>
-                        <th scope="col">Itag</th>
+                        <!-- <th scope="col">Itag</th> -->
                         <th scope="col">Download</th>
                     </tr>
                 </thead>
@@ -58,7 +55,7 @@
                     <tr>
                         <td>{{ value.format  }}</td>
                         <td>{{ value.size }}</td>
-                        <td>{{ itag }}</td>
+                        <!-- <td>{{ itag }}</td> -->
                         <td>
                             <form action="{% url 'ytd:download_complete' itag %}" method="POST"
                                 class="post-form">
