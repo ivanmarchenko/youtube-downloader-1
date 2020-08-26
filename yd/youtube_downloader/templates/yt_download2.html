@@ -1,0 +1,77 @@
+{% extends 'index.html' %}
+{% block container %}
+<br>
+<center>
+    <h2>Your video</h2>
+</center>
+<center>
+    <!-- <div class="embed-responsive embed-responsive-16by9">
+<iframe width="560" height="315"  class="embed-responsive-item" src="{{ embed_link }}" allowfullscreen></iframe>
+</div> -->
+</center>
+<br>
+<p>Url = {{ url }}</p>
+<p>Embed_link = {{ embed_link }}</p>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Select Resolution</th>
+                        <th scope="col">Size</th>
+                        <th scope="col">Itag</th>
+                        <th scope="col">Download</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for itag, value in strm_v_out.items %}
+                    <tr>
+                        <td>{{ value.resolution  }}</td>
+                        <td>{{ value.size }}</td>
+                        <td>{{ itag }}</td>
+                        <td>
+                            <form action="{% url 'ytd:download_complete' itag %}" method="POST"
+                                class="post-form">
+                                {% csrf_token %}
+                                <input type="submit" class="btn btn-success" value="DOWNLOAD">
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Type</th>
+                        <th scope="col">Size</th>
+                        <th scope="col">Itag</th>
+                        <th scope="col">Download</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for itag, value in strm_a_out.items %}
+                    <tr>
+                        <td>{{ value.format  }}</td>
+                        <td>{{ value.size }}</td>
+                        <td>{{ itag }}</td>
+                        <td>
+                            <form action="{% url 'ytd:download_complete' itag %}" method="POST"
+                                class="post-form">
+                                {% csrf_token %}
+                                <input type="submit" class="btn btn-success" value="DOWNLOAD">
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="w-100"></div>
+    </div>
+</div>
+{% endblock %}

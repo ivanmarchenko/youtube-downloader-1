@@ -20,5 +20,8 @@ app_name = 'ytd'
 urlpatterns = [
     path('', views.index, name='index'),
     path('download/', views.yt_download, name='yt_download'),
-    path('download_complete/<resolution>', views.download_complete, name='download_complete')
+    path('download_complete/<itag>', views.download_complete, name='download_complete'),
+    # path('download_complete/<itag>', views.download_complete, name='download_complete'),
+    path('download_2/', views.yt_download2, name='yt_download_2')
+
 ]
